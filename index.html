@@ -2,196 +2,502 @@
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
     <title>Lucas Cecchi</title>
-
     <meta name="author" content="Lucas Cecchi">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="stylesheet.css">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+      /* Base styles */
+      :root {
+        --primary-color: #64b5f6;
+        --secondary-color: #90caf9;
+        --background-color: #121212;
+        --card-background: #1e1e1e;
+        --text-color: #e0e0e0;
+        --text-secondary: #b0b0b0;
+        --border-radius: 8px;
+        --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        --transition: all 0.3s ease;
+      }
+      
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.0;
+        color: var(--text-color);
+        margin: 0;
+        padding: 0;
+        background-color: var(--background-color);
+      }
+      
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        margin-bottom: 10px;
+        padding: 0 0px;
+      }
+      
+      a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: var(--transition);
+      }
+      
+      a:hover {
+        color: var(--secondary-color);
+      }
+      
+      img {
+        max-width: 100%;
+      }
+      
+      /* Header */
+      header {
+        padding: 50px 0;
+        background-color: var(--card-background);
+        margin-bottom: 50px;
+        box-shadow: var(--box-shadow);
+      }
+      
+      .profile {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 40px;
+      }
+      
+      .profile-image {
+        width: 220px;
+        height: 220px;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: var(--box-shadow);
+        transition: var(--transition);
+        border: 3px solid var(--primary-color);
+      }
+       
+      
+      .profile-image:hover {
+        transform: scale(1.03);
+      }
+      
+      .profile-info {
+        flex: 1;
+        min-width: 280px;
+      }
+      
+      .name {
+        font-size: 2.3rem;
+        margin: 0 0 15px 0;
+        color: var(--text-color);
+      }
+      
+      .bio {
+        font-size: 1.05rem;
+        margin-bottom: 20px;
+        color: var(--text-secondary);
+      }
+      
+      .social-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+      }
+      
+      .social-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: var(--primary-color);
+        color: var(--background-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+      }
+      
+      .social-icon:hover {
+        transform: translateY(-3px);
+        background-color: var(--secondary-color);
+      }
+      
+      /* Section Styles */
+      .section-title {
+        font-size: 1.7rem;
+        color: var(--text-color);
+        margin-bottom: 1px;
+        padding-bottom: 1px;
+        border-bottom: 2px solid var(--primary-color);
+      }
+      
+      .research-item, .project-item {
+        display: flex;
+        margin-bottom: 5px;
+        padding: 1px;
+        border-radius: var(--border-radius);
+        background-color: var(--card-background);
+        box-shadow: var(--box-shadow);
+        flex-wrap: wrap;
+        align-items: flex-start; /* Changed from default to align items at the top */
+      }
+      
+      .research-image, .project-image {
+        width: 200px;
+        margin-right: 25px;
+        margin-left: 25px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Center images vertically */
+        align-self: center; /* Center the image container itself */
+      }
+      
+      .research-image img, .project-image img {
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        transition: var(--transition);
+        margin-bottom: 1px;
+        display: block; /* Ensures images are block elements */
+      }
+      
+      .research-image img:hover, .project-image img:hover {
+        transform: scale(1.03);
+      }
+      
+      .research-content, .project-content {
+        flex: 1;
+        min-width: 280px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Centers content vertically within its container */
+      }
+      
+      .paper-title, .project-title {
+        font-size: 1.0rem;
+        margin-bottom: 0px;
+        color: var(--primary-color);
+      }
+      
+      .paper-authors, .project-tech {
+        margin-bottom: 0px;
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+      }
+      
+      .paper-venue, .project-date {
+        font-style: italic;
+        font-size: 0.85rem;
+        margin-bottom: 0px;
+        color: var(--text-secondary);
+      }
+      
+      .paper-abstract, .project-description {
+        line-height: 1.5;
+        font-size: 0.85rem;
+      }
+      
+      .project-links {
+        margin-top: 15px;
+      }
+      
+      .project-links a {
+        display: inline-flex;
+        align-items: center;
+        background-color: var(--primary-color);
+        color: var(--background-color);
+        padding: 8px 15px;
+        border-radius: var(--border-radius);
+        margin-right: 10px;
+        margin-bottom: 10px;
+        font-size: 0.9rem;
+        transition: var(--transition);
+      }
+      
+      .project-links a:hover {
+        background-color: var(--secondary-color);
+        transform: translateY(-2px);
+      }
+      
+      .project-links a i {
+        margin-right: 5px;
+      }
+      
+      /* Tab system */
+      .tab-content {
+        display: none;
+        animation: fadeIn 0.5s ease;
+      }
+      
+      .tab-content.active {
+        display: block;
+      }
+      
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      
+      .nav-tabs {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 1px;
+        border-bottom: 1px solid #333;
+      }
+      
+      .nav-tabs button {
+        background: none;
+        border: none;
+        padding: 12px 25px;
+        margin: 0 5px;
+        font-weight: 500;
+        border-bottom: 3px solid transparent;
+        cursor: pointer;
+        font-size: 1rem;
+        color: var(--text-color);
+        transition: var(--transition);
+      }
+      
+      .nav-tabs button:hover {
+        color: var(--primary-color);
+      }
+      
+      .nav-tabs button.active {
+        border-bottom: 3px solid var(--primary-color);
+        color: var(--primary-color);
+      }
+      
+      /* Footer */
+      footer {
+        background-color: var(--card-background);
+        color: var(--text-secondary);
+        padding: 25px 0;
+        text-align: center;
+        margin-top: 50px;
+        box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+      }
+      
+      /* Responsive */
+      @media (max-width: 768px) {
+        .container {
+          padding: 0 25px;
+        }
+        
+        .profile, .research-item, .project-item {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+        
+        .profile-image {
+          margin-bottom: 20px;
+          width: 200px; /* Still larger than original but slightly reduced for mobile */
+          height: 200px;
+        }
+        
+        .research-image, .project-image {
+          margin-right: 0;
+          margin-bottom: 20px;
+          width: 100%;
+          max-width: 280px;
+        }
+        
+        .social-links, .project-links {
+          justify-content: center;
+        }
+        
+        .nav-tabs {
+          flex-wrap: wrap;
+        }
+      }
+    </style>
   </head>
 
   <body>
-    <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-      <tr style="padding:0px">
-        <td style="padding:0px">
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr style="padding:0px">
-              <td style="padding:2.5%;width:63%;vertical-align:middle">
-                <p class="name" style="text-align: center;">
-                  Lucas Cecchi
-                </p>
-                <p>I'm an Engineer at <a href="https://www.jpmorgan.com/technology/artificial-intelligence/about" target="_blank">JP Morgan AI Research</a> in NYC.</p>
+    <header>
+      <div class="container">
+        <div class="profile">
+          <img class="profile-image" src="images/lucas.png" alt="Lucas Cecchi">
+          <div class="profile-info">
+            <h1 class="name">Lucas Cecchi</h1>
+            <p class="bio">I'm an Engineer at <a href="https://www.jpmorgan.com/technology/artificial-intelligence/about" target="_blank">JP Morgan AI Research</a> in NYC.</p>
+            <p class="bio">Previously I was an intern at <a href="https://mila.quebec/en" target="_blank">MILA: Quebec AI Institute</a>, and at <a href="https://www.nlplab.psu.edu/" target="_blank">The NLP Lab at Penn State</a>.</p>
+            <div class="social-links">
+              <a href="https://www.linkedin.com/in/lucas-cecchi-25674194/" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+              <a href="https://github.com/Lucasc-99" class="social-icon"><i class="fab fa-github"></i></a>
+              <a href="files/lucascecchiresume25.pdf" class="social-icon" target="_blank"><i class="fas fa-file-alt"></i></a>
+              <!-- <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a> -->
+              <!-- <a href="" class="social-icon"><i class="fas fa-envelope"></i></a> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
 
-                <p>Previously I was an intern at <a href="https://mila.quebec/en" target="_blank">MILA: Quebec AI Institute</a>, and at <a href="https://www.nlplab.psu.edu/" target="_blank">The NLP Lab at Penn State</a>.
-                </p>
-                <p style="text-align:center">
-                  <!-- <a href="mailto:jonbarron@gmail.com">Email</a> &nbsp;/&nbsp; -->
-                  <!-- <a href="data/JonBarron-CV.pdf">CV</a> &nbsp;/&nbsp; -->
-                  <!-- <a href="data/JonBarron-bio.txt">Bio</a> &nbsp;/&nbsp; -->
-                  <!-- <a href="https://scholar.google.com/citations?hl=en&user=jktWnL8AAAAJ">Scholar</a> &nbsp;/&nbsp; -->
-                  <!-- <a href="https://twitter.com/jon_barron">Twitter</a> &nbsp;/&nbsp; -->
-                  <!-- <a href="https://bsky.app/profile/jonbarron.bsky.social">Bluesky</a> &nbsp;/&nbsp; -->
-                  <!-- <a href="https://github.com/jonbarron/">Github</a> -->
-                </p>
-              </td>
-              <td style="padding:2.5%;width:37%;max-width:37%">
-                <a href="images/lucas.png"><img style="width:100%;max-width:100%;object-fit: cover; border-radius: 50%;" alt="profile photo" src="images/lucas.png" class="hoverZoomLink"></a>
-              </td>
-            </tr>
-          </tbody></table>
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-              <tr>
-              <td style="padding:16px;width:100%;vertical-align:middle">
-                <h2>Research</h2>
-                <p>
-                 
-                </p>
-              </td>
-            </tr>
-          </tbody></table>
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-    
-            <tr>
-              <td style="padding:16px;width:20%;vertical-align:middle">
-                <div class="one">          
-                  <img src='images/reportgpt1.png' width="160">
-                  <img src='images/reportgpt2.png' width="160">
+    <div class="container">
+      <div class="nav-tabs">
+        <button class="tab-button active" data-tab="research">Research</button>
+        <button class="tab-button" data-tab="projects">Projects</button>
+      </div>
+    </div>
+
+    <main class="container">
+      <section id="research" class="tab-content active">
+        <h2 class="section-title">Research</h2>
+        
+        <div class="research-item">
+          <div class="research-image">
+            <a href="https://aclanthology.org/2024.emnlp-industry.39.pdf">
+            <img src="images/reportgpt1.png" alt="ReportGPT"></a>
+            <a href="https://aclanthology.org/2024.emnlp-industry.39.pdf"><img src="images/reportgpt2.png" alt="ReportGPT"></a>
+          </div>
+          <div class="research-content">
+            <h3 class="paper-title">
+              <a href="https://aclanthology.org/2024.emnlp-industry.39.pdf">ReportGPT: Human-in-the-loop Verifiable Table-to-Text Generation</a>
+            </h3>
+            <p class="paper-authors"><strong>Lucas Cecchi</strong>, Petr Babkin</p>
+            <p class="paper-venue">Empirical Methods in Natural Language Processing (EMNLP), 2024</p>
+            <p class="paper-abstract">We introduce a human-in-the-loop table-to-text generation pipeline that leverages LLMs, context-free grammars, and a domain-specific language, finding that LLM-based components trade off precision for more insightful downstream commentary</p>
+          </div>
+        </div>
+
+        <div class="research-item">
+            <div class="research-image">
+              <!-- No image was provided for LAW in the original document -->
+
+              <a href="https://arxiv.org/pdf/2412.11063"><img src="images/law.png" alt="LAW"></a>
+            </div>
+            <div class="research-content">
+              <h3 class="paper-title">
+                <a href="https://arxiv.org/pdf/2412.11063">LAW: Legal Agentic Workflows for Custody and Fund Services Contracts</a>
+              </h3>
+              <p class="paper-authors">William Watson, Nicole Cho, Nishan Srishankar, Zhen Zheng, <strong>Lucas Cecchi</strong>, Daniel Scott</p>
+              <p class="paper-venue">International Conference on Computational Linguistics (COLING), 2025</p>
+              <p class="paper-abstract">We introduce a modular legal agentic framework that leverages domain-specific agents and tools to enhance contract analysis in custody and fund services, significantly improving accuracy and efficiency over baseline LLMs</p>
+            </div>
+          </div>
+          
+          <div class="research-item">
+            <div class="research-image">
+              <a href="https://arxiv.org/pdf/2410.19727">
+              <img src="images/fishnet.png" alt="FISHNET"></a>
+            </div>
+            <div class="research-content">
+              <h3 class="paper-title">
+                <a href="https://arxiv.org/pdf/2410.19727">FISHNET: Financial Intelligence from Sub-querying, Harmonizing, Neural-Conditioning, Expert Swarms, and Task Planning</a>
+              </h3>
+              <p class="paper-authors">Nicole Cho, Nishan Srishankar, <strong>Lucas Cecchi</strong>, William Watson</p>
+              <p class="paper-venue">ACM International Conference on AI in Finance (ICAIF), 2024</p>
+              <p class="paper-abstract">We introduce a heterogeneous multi-agent swarm that answers a query about financial documents by validating the question, breaking it into sub-tasks, and ochestrating the sub-task to agents specialized on particular filings</p>
+            </div>
+          </div>
+          
+          <div class="research-item">
+            <div class="research-image">
+              <a href="https://dl.acm.org/doi/10.1145/3539618.3591875">
+              <img src="images/bizgraphqa.png" alt="BizGraphQA"></a>
+            </div>
+            <div class="research-content">
+              <h3 class="paper-title">
+                <a href="https://dl.acm.org/doi/10.1145/3539618.3591875">BizGraphQA: A dataset for image-based inference over graph-structured diagrams from business domains</a>
+              </h3>
+              <p class="paper-authors">Petr Babkin, William Watson, Zhiqiang Ma, <strong>Lucas Cecchi</strong>, Natraj Raman, Armineh Nourbakhsh, Sameena Shah</p>
+              <p class="paper-venue">ACM Special Interest Group on Information Retrieval (SIGIR), 2023</p>
+              <p class="paper-abstract">We present a dataset of 130,000 questions on 10,000 synthetic graph-structured diagrams, realistically rendered in PDFs with diverse styles and layouts, along with a multimodal transformer baseline</p>
                 </div>
-                
-              </td>
-              <!-- add picture here -->
-              <td style="padding:8px;width:80%;vertical-align:middle">
-                <a href="https://aclanthology.org/2024.emnlp-industry.39/">
-              <span class="papertitle">ReportGPT: Human-in-the-loop Verifiable Table-to-Text Generation
-        </span>
-                </a>
-                <br>
-                <strong>Lucas Cecchi</strong>,
-                Petr Babkin
-                <br>
-                <em>Empirical Methods in Natural Language Processing (EMNLP)</em>, 2024 &nbsp
-                <br>
-                <p></p>
-                <p>
-                We introduce a human-in-the-loop table-to-text generation pipeline that leverages LLMs, context-free grammars, and a domain-specific language, finding that LLM-based components trade off precision for more insightful downstream commentary  
-                </p>
-              </td>
-            </tr>     
-<!-- add this for highlighting bgcolor="#ffffd0" -->
-    <tr> 
-      <td style="padding:16px;width:20%;vertical-align:middle">
-        <div class="one">          
-          <img src='images/law.png' width="160">
+            </div>
+
+            <div class="research-item">
+                <div class="research-image">
+                  <a href="https://arxiv.org/pdf/2108.01005">
+                    <img src="images/sequoia.png" alt="Sequoia"></a>
+                </div>
+                <div class="research-content">
+                    <h3 class="paper-title">
+                        <a href="https://arxiv.org/pdf/2108.01005">Sequoia: A Software Framework to Unify
+                            Continual Learning Research</a>
+                    </h3>
+                    <p class="paper-authors">Fabrice Normandin, Florian Golemo, Oleksiy Ostapenko, Pau Rodriguez, Ryan
+                        Lindeborg, Matthew Riemer, <strong>Lucas Cecchi</strong>, Timothee Lesort, Khimya Khetarpal,
+                        David Vazquez, Laurent Charlin, Irina Rish, Massimo Caccia</p>
+                    <p class="paper-venue">Conference on Lifelong Learning Agents, 2022</p>
+                    <p class="paper-abstract">We develop a software framework that unifies Continual Learning research,
+                        conducting large-scale empirical studies evaluating state-of-the-art methods across diverse
+                        Continual Supervised and Reinforcement Learning settings, with over 8000 experiments covering
+                        multiple datasets and algorithms</p>
+                </div>
+            </div>
+        </section>
+        <section id="projects" class="tab-content">
+            <h2 class="section-title">Projects</h2>
+            <div class="project-item">
+                <div class="project-image">
+                    <img src="images/terasort2.png" alt="Distributed Sorting">
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">TeraSort </h3>
+                    <p class="project-tech">C, MPI </p>
+                    <p class="project-description">I implement TeraSort: a map/reduce algorithm for efficiently sorting data sharded across an arbitrarily large number of machines, and benchmark it on Georgia Tech's High Performance Computing Cluster</p>
+                    <div class="project-links">
+                        <a href="#"><i class="fab fa-github"></i> Code Available upon Request</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-item">
+              <div class="project-image">
+                  <img src="images/hjlistrank.png" alt="HJ CUDA">
+              </div>
+              <div class="project-content">
+                  <h3 class="project-title">Helman-JaJa List Ranking</h3>
+                  <p class="project-tech">CUDA</p>
+                  <p class="project-description">I implement CUDA kernels for the Helman-JaJa distributed list ranking algorithm and benchmark them on Georgia Tech's GPU cluster</p>
+                  <div class="project-links">
+                      <a href="https://github.com/Lucasc-99/NoTorch"><i class="fab fa-github"></i>Code Available upon Request</a>
+                  </div>
+              </div>
+            </div>
+            <div class="project-item">
+              <div class="project-image">
+                  <a href="https://github.com/Lucasc-99/NoTorch"><img src="images/notorch.png" alt="NoTorch"></a>
+              </div>
+              <div class="project-content">
+                  <h3 class="project-title">NoTorch</h3>
+                  <p class="project-tech">Numpy </p>
+                  <p class="project-description">I build a blazing fast deep learning library from scratch (numpy only), with speeds rivaling PyTorch and surpassing MicroGrad </p>
+                  <div class="project-links">
+                      <a href="https://github.com/Lucasc-99/NoTorch"><i class="fab fa-github"></i></a>
+                  </div>
+              </div>
+            </div>
+            
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy;</p>
         </div>
-        
-      </td>
-      <!-- add picture here -->
-      <td style="padding:8px;width:80%;vertical-align:middle">
-        <a href="https://arxiv.org/abs/2412.11063">
-      <span class="papertitle">LAW: Legal Agentic Workflows for Custody and Fund Services Contracts
-</span>
-        </a>
-        <br>
-        William Watson, 
-        Nicole Cho, 
-        Nishan Srishankar, 
-        Zhen Zheng, 
-        <strong>Lucas Cecchi</strong>,
-        Daniel Scott,
-        <br>
-        <em>International Conference on Computational Linguistics (COLING)</em>, 2025 &nbsp
-        <br>
-        <p></p>
-        <p>
-          We introduce a modular legal agentic framework that leverages domain-specific agents and tools to enhance contract analysis in custody and fund services, significantly improving accuracy and efficiency over baseline LLMs        </p>
-      </td>
-    </tr>
+    </footer>
 
-    <tr> 
-      <td style="padding:16px;width:20%;vertical-align:middle">
-        <div class="one">          
-          <img src='images/fishnet.png' width="160">
-        </div>
-        
-      </td>
-      <!-- add picture here -->
-      <td style="padding:8px;width:80%;vertical-align:middle">
-        <a href="https://arxiv.org/abs/2410.19727?">
-          
-      <span class="papertitle">FISHNET: Financial Intelligence from Sub-querying, Harmonizing, Neural-Conditioning, Expert Swarms, and Task Planning
-</span>
-        </a>
-        <br>
-        Nicole Cho, Nishan Srishankar, <strong>Lucas Cecchi</strong>, William Watson
-        <br>
-        <em>ACM International Conference on AI in Finance (ICAIF)</em>, 2024 &nbsp
-        <br>
-        <p></p>
-        <p>
-          We introduce a heterogeneous multi-agent swarm that answers a query about financial documents by validating the question, breaking it into sub-tasks, and ochestrating the sub-task to agents specialized on particular filings
-        </p>
-      </td>
-    </tr>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
 
-    <tr> 
-      <td style="padding:16px;width:20%;vertical-align:middle">
-        <div class="one">          
-          <img src='images/bizgraphqa.png' width="160">
-        </div>
-        
-      </td>
-      <!-- add picture here -->
-      <td style="padding:8px;width:80%;vertical-align:middle">
-        <a href="https://dl.acm.org/doi/10.1145/3539618.3591875">
-          
-      <span class="papertitle">BizGraphQA: A dataset for image-based inference over graph-structured diagrams from business domains
-</span>
-        </a>
-        <br>
-        Petr Babkin, William Watson, Zhiqiang Ma, <strong>Lucas Cecchi</strong>, Natraj Raman, Armineh Nourbakhsh, Sameena Shah
-        
-        <br>
-        <em>ACM Special Interest Group on Information Retrieval (SIGIR)</em>, 2023 &nbsp
-        <br>
-        <p></p>
-        <p>
-          We present a dataset of 130,000 questions on 10,000 synthetic graph-structured diagrams, realistically rendered in PDFs with diverse styles and layouts, along with a multimodal transformer baseline
-        </p>
-      </td>
-    </tr>
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    // Remove active class from all buttons and content
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
 
-    <tr> 
-      <td style="padding:16px;width:20%;vertical-align:middle">
-        <div class="one">          
-          <img src='images/sequoia.png' width="160">
-        </div>
-        
-      </td>
-      <!-- add picture here -->
-      <td style="padding:8px;width:80%;vertical-align:middle">
-        <a href="https://dl.acm.org/doi/10.1145/3539618.3591875">
-          
-      <span class="papertitle">Sequoia: A Software Framework
-        to Unify Continual Learning Research
-</span>
-        </a>
-        <br>
-        Fabrice Normandin, Florian Golemo, Oleksiy Ostapenko, Pau Rodriguez, Ryan Lindeborg, Matthew Riemer, <strong>Lucas Cecchi</strong>, Timothee Lesort, Khimya Khetarpal, David Vazquez, Laurent Charlin, Irina Rish, Massimo Caccia
-        <br>
-        <em>Conference on Lifelong Learning Agents</em>, 2022 &nbsp
-        <br>
-        <p></p>
-        <p>
-        We develop a software framework that unifies Continual Learning research, conducting large-scale empirical studies evaluating state-of-the-art methods across diverse Continual Supervised and Reinforcement Learning settings, with over 8000 experiments covering multiple datasets and algorithms
-        </p>
-      </td>
-    </tr>
+                    // Add active class to current button
+                    this.classList.add('active');
 
-    <!-- NEW -->
+                    // Show corresponding content
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
 
-      <!-- NEW -->
-    </table>
-  </body>
 </html>
