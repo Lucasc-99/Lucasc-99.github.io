@@ -16,6 +16,7 @@
         --card-background: #1e1e1e;
         --text-color: #e0e0e0;
         --text-secondary: #b0b0b0;
+        --highlight-color: #;
         --border-radius: 8px;
         --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         --transition: all 0.3s ease;
@@ -175,6 +176,13 @@
         font-size: 1.0rem;
         margin-bottom: 0px;
         color: var(--primary-color);
+      }
+
+      .highlighted-author {
+        font-size: .85rem;
+        font-weight: bold;
+        margin-bottom: 0px;
+        color: var(--text-color);
       }
       
       .paper-authors, .project-tech {
@@ -353,7 +361,7 @@
             <h3 class="paper-title">
               <a href="https://aclanthology.org/2024.emnlp-industry.39.pdf">ReportGPT: Human-in-the-loop Verifiable Table-to-Text Generation</a>
             </h3>
-            <p class="paper-authors"><strong>Lucas Cecchi</strong>, Petr Babkin</p>
+            <p class="paper-authors"><a class="highlighted-author">Lucas Cecchi</a>, Petr Babkin</p>
             <p class="paper-venue">Empirical Methods in Natural Language Processing (EMNLP), 2024</p>
             <p class="paper-abstract">We introduce a human-in-the-loop table-to-text generation pipeline that leverages LLMs, context-free grammars, and a domain-specific language, finding that LLM-based components trade off precision for more insightful downstream commentary</p>
           </div>
@@ -369,7 +377,7 @@
               <h3 class="paper-title">
                 <a href="https://arxiv.org/pdf/2412.11063">LAW: Legal Agentic Workflows for Custody and Fund Services Contracts</a>
               </h3>
-              <p class="paper-authors">William Watson, Nicole Cho, Nishan Srishankar, Zhen Zheng, <strong>Lucas Cecchi</strong>, Daniel Scott</p>
+              <p class="paper-authors">William Watson, Nicole Cho, Nishan Srishankar, Zhen Zheng, <a class="highlighted-author">Lucas Cecchi</a>, Daniel Scott</p>
               <p class="paper-venue">International Conference on Computational Linguistics (COLING), 2025</p>
               <p class="paper-abstract">We introduce a modular legal agentic framework that leverages domain-specific agents and tools to enhance contract analysis in custody and fund services, significantly improving accuracy and efficiency over baseline LLMs</p>
             </div>
@@ -384,7 +392,7 @@
               <h3 class="paper-title">
                 <a href="https://arxiv.org/pdf/2410.19727">FISHNET: Financial Intelligence from Sub-querying, Harmonizing, Neural-Conditioning, Expert Swarms, and Task Planning</a>
               </h3>
-              <p class="paper-authors">Nicole Cho, Nishan Srishankar, <strong>Lucas Cecchi</strong>, William Watson</p>
+              <p class="paper-authors">Nicole Cho, Nishan Srishankar,  <a class="highlighted-author">Lucas Cecchi</a>, William Watson</p>
               <p class="paper-venue">ACM International Conference on AI in Finance (ICAIF), 2024</p>
               <p class="paper-abstract">We introduce a heterogeneous multi-agent swarm that answers a query about financial documents by validating the question, breaking it into sub-tasks, and ochestrating the sub-task to agents specialized on particular filings</p>
             </div>
@@ -399,7 +407,7 @@
               <h3 class="paper-title">
                 <a href="https://dl.acm.org/doi/10.1145/3539618.3591875">BizGraphQA: A dataset for image-based inference over graph-structured diagrams from business domains</a>
               </h3>
-              <p class="paper-authors">Petr Babkin, William Watson, Zhiqiang Ma, <strong>Lucas Cecchi</strong>, Natraj Raman, Armineh Nourbakhsh, Sameena Shah</p>
+              <p class="paper-authors">Petr Babkin, William Watson, Zhiqiang Ma,  <a class="highlighted-author">Lucas Cecchi</a>, Natraj Raman, Armineh Nourbakhsh, Sameena Shah</p>
               <p class="paper-venue">ACM Special Interest Group on Information Retrieval (SIGIR), 2023</p>
               <p class="paper-abstract">We present a dataset of 130,000 questions on 10,000 synthetic graph-structured diagrams, realistically rendered in PDFs with diverse styles and layouts, along with a multimodal transformer baseline</p>
                 </div>
@@ -416,7 +424,7 @@
                             Continual Learning Research</a>
                     </h3>
                     <p class="paper-authors">Fabrice Normandin, Florian Golemo, Oleksiy Ostapenko, Pau Rodriguez, Ryan
-                        Lindeborg, Matthew Riemer, <strong>Lucas Cecchi</strong>, Timothee Lesort, Khimya Khetarpal,
+                        Lindeborg, Matthew Riemer,  <a class="highlighted-author">Lucas Cecchi</a>, Timothee Lesort, Khimya Khetarpal,
                         David Vazquez, Laurent Charlin, Irina Rish, Massimo Caccia</p>
                     <p class="paper-venue">Conference on Lifelong Learning Agents, 2022</p>
                     <p class="paper-abstract">We develop a software framework that unifies Continual Learning research,
@@ -430,7 +438,7 @@
             <h2 class="section-title">Projects</h2>
             <div class="project-item">
                 <div class="project-image">
-                    <img src="images/terasort2.png" alt="Distributed Sorting">
+                    <img src="images/terasort.png" alt="Distributed Sorting">
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">TeraSort </h3>
